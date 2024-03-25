@@ -1,15 +1,15 @@
+<template>
+
+</template>
+
 <script>
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-name: "index"
+  name: "index"
 })
 </script>
 
-<template>
-  $END$
-</template>
-
-<style scoped>
+<style scoped lang="less">
 
 </style>
