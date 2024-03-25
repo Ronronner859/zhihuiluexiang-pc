@@ -66,4 +66,24 @@
     --200，代表服务返回成功
     --整个项目，接口前缀都有api/
 11.axios的二次封装（发送请求）
-    XM
+    XMLHttpRequest 、fetch、JQ、axios
+    11.1为什么要二次封装axios? npm install --save axios
+    请求拦截器、响应拦截器
+    11.2 项目当中经常有API文件夹【axios】
+    接口文档中:路径都带有api
+    baseurl:'/api'
+    11.3 axios可以参考 git|官网
+12.接口统一管理
+    项目很小：完全可以在组件的生命周期函数发请求
+    项目很大：axios.get('xx')
+    12.1跨域问题
+    1.协议、端口号、域名不同请求，称之为跨域
+    http://localhost:8080/ --本地服务器
+    http://gmall-h5-api.atguigu.cn --后台服务器
+    解决方法：【基础】
+    -jsonp
+    -cros
+    -代理 ：https://www.webpackjs.com/configuration/dev-server/#devserverproxy
+13.nprogress进度条的使用【插件】
+    请求和拦截器中进行使用 git|官方文档
+    必须引入样式

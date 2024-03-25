@@ -6,7 +6,9 @@ Vue.component(TypeNav.name, TypeNav)
     // 引入路由
 import router from '@/router'
 Vue.config.productionTip = false
-
+    // 测试
+import { getBaseCategoryList } from '@/api'
+getBaseCategoryList();
 new Vue({
     //注册路由
     render: h => h(App),
