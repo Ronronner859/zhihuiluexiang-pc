@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <HeaderIndex></HeaderIndex>
+  <div>
+    <HeaderIndex/>
+     <router-view/>
     <FooterIndex/>
   </div>
 </template>
@@ -10,7 +11,7 @@
 import  HeaderIndex from './components/Header/HeaderIndex.vue'
 import FooterIndex from './components/Footer/FooterIndex.vue'
 export default {
-  name: 'App',
+  name: '',
   components:{
     HeaderIndex,
     FooterIndex
