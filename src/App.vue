@@ -2,7 +2,9 @@
   <div>
     <HeaderIndex/>
      <router-view/>
-    <FooterIndex/>
+     <!-- 在home和search下显示的 登录或者注册时隐藏的 -->
+    <!-- <FooterIndex v-show="$route.path=='/home'||$route.path=='/search'"/> -->
+    <FooterIndex v-show="$route.meta.show"></FooterIndex>
   </div>
 </template>
 
