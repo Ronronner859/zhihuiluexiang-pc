@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-  hello world
+    <HeaderIndex></HeaderIndex>
+    <FooterIndex/>
   </div>
 </template>
 
 <script>
-
+// 引入
+import  HeaderIndex from './components/Header/HeaderIndex.vue'
+import FooterIndex from './components/Footer/FooterIndex.vue'
 export default {
   name: 'App',
-
+  components:{
+    HeaderIndex,
+    FooterIndex
+  } 
 }
 </script>
 
