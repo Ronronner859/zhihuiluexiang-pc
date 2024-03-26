@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import TypeNav from '@/pages/Home/TypeNav'
+//三级联动全局组件
+import TypeNav from '@/components/TypeNav'
 // 注册全局组件
 Vue.component(TypeNav.name, TypeNav)
     // 引入路由
@@ -8,9 +9,7 @@ import router from '@/router'
 // 引入数据仓库
 import store from '@/store'
 Vue.config.productionTip = false
-    // 测试
-import { getBaseCategoryList } from '@/api'
-getBaseCategoryList();
+
 new Vue({
     //注册路由
     render: h => h(App),
