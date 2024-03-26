@@ -77,10 +77,10 @@ export default {
                 query:{
                     k:this.keyword.toUpperCase()
                 }
-            })
+            },()=>{},()=>{})
         },
     },
-};
+};``    
 </script>
 
 <style scoped lang="less">

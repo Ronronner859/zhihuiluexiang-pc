@@ -87,3 +87,38 @@
 13.nprogress进度条的使用【插件】
     请求和拦截器中进行使用 git|官方文档
     必须引入样式
+14.vuex状态管理库
+    14.1是什么？
+    vuex是官方提供的 一个插件，状态管理库，集中管理组件中的数据
+    （共用的数据找vuex）npm install --save vuex --legacy-peer-deps
+    什么时候需要用vuex?项目很大、组件很多、数据很多、数据维护很费劲
+    state
+    mutations
+    actions
+    getters
+    modules
+    // //仓库存储数据的地方
+    const state = {
+        count: 1
+    }
+    // 修改state的唯一手段
+    const mutations = {
+        add(state) {
+            state.count++
+        }
+    }
+    // actions 处理action 书写自己的业务逻辑 处理异步
+    const actions = {
+        // 书写业务逻辑 不能修改state提交mutations
+        add({ commit }) {
+            commit('add')
+        }
+    }
+    // getters 理解为计算属性 用于简化数据 让组件获取数据更加方便
+    const getters = {}
+    14.2 vuex的基本使用
+
+
+    14.3vuex模块化开发 （项目大、组件多、接口多、数据也很多）
+    可以让vuex进行模块化开发 大仓库变成多个小的仓库
+    
