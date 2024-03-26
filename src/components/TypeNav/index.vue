@@ -47,7 +47,8 @@
 
 <script>
 import { mapState } from 'vuex';
-
+// loadsh函数 按需加载
+import _ from 'lodash';
 
 export default {
     name:'TypeNav',
@@ -70,9 +71,15 @@ export default {
 
     },
   methods:{
-    changeIndex(index){
+    // changeIndex(index){
+    //   this.currentIndex = index
+    //     console.log(index)
+    //
+    // },
+    changeIndex:_.throttle(function(index){
       this.currentIndex = index
-    },
+      console.log(index)
+    },50),
     leaveIndex(){
       this.currentIndex = -1
     }
