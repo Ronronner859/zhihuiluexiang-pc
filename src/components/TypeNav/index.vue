@@ -2,9 +2,11 @@
   <!-- 商品分类导航 -->
   <div class="type-nav">
     <div class="container">
-      <div @mouseleave="leaveIndex">
+      <div @mouseleave="leaveshow"  @mouseenter="entershow">
         <h2 class="all">全部商品分类</h2>
-        <div class="sort">
+        <!-- 过度动画 -->
+        <transition name="sort">
+        <div class="sort" v-show="show">
           <div
             class="all-sort-list2"
             @click="goSearch"
@@ -52,14 +54,15 @@
                         <!-- <router-link to="/search">{{item_3.categoryName}}</router-link> -->
                       </em>
                     </dd>
-                  </dl>
+                  </dl> 
                 </div>
               </div>
             </div>
-
           </div>
         </div>
+        </transition>
       </div>
+      
       <nav class="nav">
         <a href="###">服装城</a>
         <a href="###">美妆馆</a>
@@ -85,12 +88,16 @@ export default {
     data(){
       return{
         currentIndex:-1,
+        show:true
       }
     },
     // 组件挂载完毕 发送请求获取数据
     mounted() {
         // 通知vuex发送请求 获取数据 存储在仓库中
         this.$store.dispatch('categoryList')
+        if(this.$route.path != '/home'){
+          this.show  = false
+        }
     },
      computed: {
         // 右侧需要的是一个函数 当使用这个计算属性的时候 ，右侧的函数会立即执行
@@ -98,7 +105,7 @@ export default {
         ...mapState({
             categoryList:state => state.home.categoryList
         }),
-
+ 
     },
       methods:{
         // changeIndex(index){
@@ -110,9 +117,6 @@ export default {
           this.currentIndex = index
           console.log(index)
         },50),
-        leaveIndex(){
-          this.currentIndex = -1
-        },
         goSearch(event){
           // 编程式导航+事件委派  点击的一定是a? 路由参数是需要传递的
           // 如何确定一点事a标签 怎么区分一级二级三级的标题
@@ -131,11 +135,21 @@ export default {
               query.category2Id = category2id
             }else{
               query.category3Id = category3id
-            }
+            }   
             location.query = query
           this.$router.push(location)
           }
-           
+        },
+        entershow(){
+          if(this.$route.path!='/home'){
+            this.show = true
+          }
+        },
+        leaveshow(){
+          if(this.$route.path!= '/home'){
+            this.changeIndex = -1
+            this.show = false
+          }
         }
       }
 }
@@ -171,7 +185,7 @@ export default {
         color: #333;
       }
     }
-
+    
     .sort {
       position: absolute;
       left: 0;
@@ -262,6 +276,15 @@ export default {
           background-color: skyblue;
         }
       }
+    }
+    .sort-enter {
+      height: 0px;
+    }
+    .sort-enter-to{
+      height: 461px;
+    }
+    .sort-enter-active {
+      transition: all .5s linear;
     }
   }
 }

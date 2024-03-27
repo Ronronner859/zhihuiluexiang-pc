@@ -143,3 +143,4 @@
     路由跳转：声明式 router-link|编程式 push/replace
     三级联动：使用router-link 可以实现参数的传递和路由跳转 但是会出现卡顿现象
     router-link  是一个组件 【服务器数据返回后】会创建很多的组件实例
+21 search模块中商品分类的动画的过度效果
