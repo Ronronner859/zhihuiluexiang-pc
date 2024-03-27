@@ -146,3 +146,6 @@
 21 search模块中商品分类的动画的过度效果
 22 如何将三级联动列表进行优化
     在根组件发请求就行了
+23 合并query和params参数
+24 开发home首页 模拟数据mockjshttps://www.docschina.org/
+npm install mockjs
