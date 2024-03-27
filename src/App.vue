@@ -17,7 +17,11 @@ export default {
   components:{
     HeaderIndex,
     FooterIndex
-  } 
+  },
+  mounted() {
+    //TODO: 优化
+    this.$store.dispatch('categoryList')
+  },
 }
 </script>
 
