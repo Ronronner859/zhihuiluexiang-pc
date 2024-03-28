@@ -149,3 +149,8 @@
 23 合并query和params参数
 24 开发home首页 模拟数据mockjshttps://www.docschina.org/
 npm install mockjs
+    1.引入mock
+    2.创建mock文件夹
+    3.创建json数据
+    4.创建mockServe.js对外暴露mock述据
+    5.入口文件引入mockServe

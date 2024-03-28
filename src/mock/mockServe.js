@@ -6,4 +6,4 @@ import floors from './floors.json'
 
 // 第一个参数时地址 第二个是数据
 Mock.mock('/mock/banners', { code: 200, data: banners })
-Mock.mock('/mock/floos', { code: 200, data: floors })
+Mock.mock('/mock/floors', { code: 200, data: floors })
