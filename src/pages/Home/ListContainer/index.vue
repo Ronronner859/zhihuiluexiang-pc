@@ -4,7 +4,7 @@
         <div class="sortList clearfix">
             <div class="center">
                 <!--banner轮播 引入swiper-->
-                <div class="swiper-container" id="mySwiper">
+                <div class="swiper-container" id="mySwiper" ref="mySwiper">
                     <div class="swiper-wrapper" >
                         <div class="swiper-slide" v-for="item in bannerList" :key="item.id">
                             <img :src="item.imgUrl" />
@@ -119,7 +119,8 @@ export default {
         this.$store.dispatch('getBannerList');
         //利用nexttick
         this.$nextTick(()=>{
-             var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
+            // this.$refs.mySwiper 通过其获取dom 一个对象，持有注册过 ref attribute 的所有 DOM 元素和组件实例。
+             var mySwiper = new Swiper(this.$refs.mySwiper, {
                 // direction: 'vertical', // 垂直切换选项
                 loop: true, // 循环模式选项
                 

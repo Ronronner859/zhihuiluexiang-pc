@@ -18,3 +18,6 @@ export const getBaseCategoryList = () => requests({ url: '/product/getBaseCatego
     // 切记当函数执行完需要把服务器返回结果返回
     //获取banner
 export const reqgetBannerList = () => mockRequest({ url: '/banner', method: 'GET' })
+
+// 获取floor数据
+export const reqFlooerList = () => mockRequest({ url: '/floors', method: 'GET' })
