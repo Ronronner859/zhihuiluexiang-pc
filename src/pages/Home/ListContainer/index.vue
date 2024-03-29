@@ -3,20 +3,11 @@
     <div class="list-container">
         <div class="sortList clearfix">
             <div class="center">
-                <!--banner轮播-->
+                <!--banner轮播 引入swiper-->
                 <div class="swiper-container" id="mySwiper">
-                    <div class="swiper-wrapper">
-                        <!-- <div class="swiper-slide">
-                            <img src="./images/banner1.jpg" />
-                        </div> -->
-                        <!-- <div class="swiper-slide">
-                            <img src="./images/banner2.jpg" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./images/banner3.jpg" />
-                        </div> -->
-                        <div class="swiper-slide">
-                            <img src="./images/banner4.jpg" />
+                    <div class="swiper-wrapper" >
+                        <div class="swiper-slide" v-for="item in bannerList" :key="item.id">
+                            <img :src="item.imgUrl" />
                         </div>
                     </div>
                     <!-- 如果需要分页器 -->
@@ -116,17 +107,118 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex';
+import Swiper from 'swiper';
 export default {
-    name:"",
+    name: '',
+    // mounted：组件挂载完毕了正常说组件结构有了
+    // swiper在mOunted直接写不可以是因为结构不完整 
+    // 如果是动态的渲染结果呢？
     mounted() {
         // 派发action 通过vuex发起ajax请求，将数据放入仓库中
-        this.$store.dispatch('getBannerList')
+        this.$store.dispatch('getBannerList');
+        //利用nexttick
+        this.$nextTick(()=>{
+             var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
+                // direction: 'vertical', // 垂直切换选项
+                loop: true, // 循环模式选项
+                
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                clickable: true,
+                // 如果需要滚动条
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            });
+        })        
+        // 定时器方法
+        // setTimeout(() => {
+        //     var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
+        //         // direction: 'vertical', // 垂直切换选项
+        //         loop: true, // 循环模式选项
+                
+        //         // 如果需要分页器
+        //         pagination: {
+        //             el: '.swiper-pagination',
+        //         },
+
+        //         // 如果需要前进后退按钮
+        //         navigation: {
+        //             nextEl: '.swiper-button-next',
+        //             prevEl: '.swiper-button-prev',
+        //         },
+        //         clickable: true,
+        //         // 如果需要滚动条
+        //         scrollbar: {
+        //             el: '.swiper-scrollbar',
+        //         },
+        //     });
+        // }, 2000);
     },
+    watch:{
+        // 监听banner数据的变化
+        bannerList:{
+            // 事件处理
+            hander(newValue,oldValue){
+                // 没办法保证v-for是否执行完毕 是要耗时的 只能保证bannerlist有数据的
+            var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
+                // direction: 'vertical', // 垂直切换选项
+                loop: true, // 循环模式选项
+                
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                clickable: true,
+                // 如果需要滚动条
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            });
+            }
+        }
+    },
+    // updated() {
+    //     var mySwiper = new Swiper(document.querySelector(".swiper-container"), {
+    //         direction: 'vertical', // 垂直切换选项
+    //         loop: true, // 循环模式选项
+
+    //         // 如果需要分页器
+    //         pagination: {
+    //             el: '.swiper-pagination',
+    //         },
+
+    //         // 如果需要前进后退按钮
+    //         navigation: {
+    //             nextEl: '.swiper-button-next',
+    //             prevEl: '.swiper-button-prev',
+    //         },
+
+    //         // 如果需要滚动条
+    //         scrollbar: {
+    //             el: '.swiper-scrollbar',
+    //         },
+    //     });
+    // },
     computed: {
         ...mapState({
-            bannerList:state=>this.home.bannerList
-        })
+            bannerList: state => state.home.bannerList,
+        }),
     },
 };
 </script>

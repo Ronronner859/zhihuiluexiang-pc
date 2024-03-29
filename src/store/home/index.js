@@ -1,4 +1,4 @@
-import { getBaseCategoryList, getBannerList } from '@/api'
+import { getBaseCategoryList, reqgetBannerList } from '@/api'
 const state = {
     // state 中的数据中的的默认的初始值不能乱写 服务器返回的
     categoryList: [],
@@ -8,7 +8,7 @@ const mutations = {
     CATEGORYLIST(state, categoryList) {
         state.categoryList = categoryList
     },
-    REQGETBANNERLIST(state, bannerList) {
+    GETBANNERLIST(state, bannerList) {
         state.bannerList = bannerList
     }
 }
@@ -22,10 +22,10 @@ const actions = {
             }
         },
         // 获取首页的轮播图的数据
-        async ReqGetBannerList({ commit }) {
-            let res = await getBannerList()
+        async getBannerList({ commit }) {
+            let res = await reqgetBannerList()
             if (res.code === 200) {
-                commit('REQGETBANNERLIST', res.data);
+                commit('GETBANNERLIST', res.data);
             }
         }
 

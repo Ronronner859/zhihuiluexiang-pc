@@ -17,4 +17,4 @@ import mockRequest from "./mockAjax";
 export const getBaseCategoryList = () => requests({ url: '/product/getBaseCategoryList', method: 'GET' })
     // 切记当函数执行完需要把服务器返回结果返回
     //获取banner
-export const getBannerList = () => mockRequest.get('/banners')
+export const reqgetBannerList = () => mockRequest({ url: '/banner', method: 'GET' })

@@ -154,3 +154,17 @@ npm install mockjs
     3.创建json数据
     4.创建mockServe.js对外暴露mock述据
     5.入口文件引入mockServe
+    [vuex]
+25 swiper的使用 https://www.swiper.com.cn/
+    1.安装插件稳定版本
+    2.引入包
+    3.必须由页面的结构(也就说在页面挂载后才能使用)
+    4.初始化实例
+26 解决轮播图问题
+    <!-- watch是一个观察动作.可以侦听指定名称属性值(data/computed)的变化,属性值一旦发生变化时就会触发侦听器,然后侦听器执行相应的业务代码. https://juejin.cn/post/7021906482765496351  -->
+    handler: 固定方法触发. 侦听函数必须叫handler(必写)
+    deep: 开启深度侦听(必写)
+    immediate: 立即侦听(页面初始化时handler立即执行一次)
+    watch监听：数据监听，监听已有数据变化（尤其是动态的渲染数据，需要等待或者监听的情况）
+    + nextTick 将回调延迟到下次 DOM 更新循环之后执行。在修改数据之后立即使用它，然后等待 DOM 更新。它跟全局方法 Vue.nextTick 一样，不同的是回调的 this 自动绑定到调用它的实例上。   
+27 footer组件

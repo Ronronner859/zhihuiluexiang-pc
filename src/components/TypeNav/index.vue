@@ -94,7 +94,7 @@ export default {
     // 组件挂载完毕 发送请求获取数据
     mounted() {
         // 通知vuex发送请求 获取数据 存储在仓库中
-        
+        this.$store.dispatch('categoryList')
         if(this.$route.path != '/home'){
           this.show  = false
         }
