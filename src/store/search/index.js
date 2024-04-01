@@ -1,6 +1,24 @@
-const state = {}
-const mutations = {}
-const actions = {}
+import { reqGetSearchInfo } from "@/api"
+
+const state = {
+    // searchList 不能乱写
+    searchList: {}
+}
+const mutations = {
+    GETSEARCHINFO(state, searchList) {
+        state.searchList = searchList
+    }
+}
+const actions = {
+    // 获取search模块的数据 dispatch的时候回派发一个action的传递过来的，第二个参数传递过来的至少一个空对象
+    async getSearchInfo({ commit }, params = {}) {
+        let result = await reqGetSearchInfo(params)
+        console.log(result);
+        if (result.code == 200) {
+            commit("GETSEARCHINFO", result.data)
+        }
+    }
+}
 const getters = {}
 
 export default {
