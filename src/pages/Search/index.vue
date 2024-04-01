@@ -174,7 +174,7 @@ export default {
       // this.searchParams.categoryName = this.$route.query.categoryName
       // this.searchParams.keyword = this.$route.params.keyword
       // Object.assign:es6的语法
-      Object.assign(searchParams,this.$route.query,this.$route.params)
+      Object.assign(this.searchParams,this.$route.query,this.$route.params)
     },
     mounted() {
       // 在服务器发请求之前带给服务器的参数【参数发生变化】
@@ -195,6 +195,21 @@ export default {
         getData() {
             this.$store.dispatch('getSearchInfo', this.searchParams);
         },
+    },
+    // 数据监听，监听组件实例身上的属性的属性值发生了变化
+    watch: {
+      // 监听路由的信息是否发生变化 变化再次发送请求
+      $route(newValue,oldValue){
+        // 再次发请求时再次整理参数
+        Object.assign(this.searchParams,this.$route.query,this.$route.params)
+        // 再次发送请求
+        this.getData()
+        console.log(this.searchParams);
+        // 每次请求完毕 应该把1、2、3级分类的id置空
+        this.searchParams.category1Id = "",
+        this.searchParams.category2Id = "",
+        this.searchParams.category3Id = ""
+      }
     },
 };
 </script>
