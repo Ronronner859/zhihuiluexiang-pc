@@ -21,15 +21,17 @@ const actions = {
     }
     // 简化数据而生 计算属性 组件中要用的数据进行简化
 const getters = {
-    goodsList(state) {
-        // 返回的数据会有两种情况
-        return state.searchList.goodsList
-    },
+    // goodsList(state) {
+    //     // 返回的数据会有两种情况
+    //     return state.searchList.goodsList || []
+    // },
+    // es5写法
+    goodsList: state => state.searchList.goodsList,
     trademarkList(state) {
-        return state.searchList.trademarkList
+        return state.searchList.trademarkList || []
     },
     attrsList(state) {
-        return state.searchList.attrsList
+        return state.searchList.attrsList || []
     }
 }
 
